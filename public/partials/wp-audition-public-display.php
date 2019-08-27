@@ -8,8 +8,8 @@
  * @link       https://github.com/linaseniorwebdev
  * @since      1.0.0
  *
- * @package    Wp_Audition
- * @subpackage Wp_Audition/public/partials
+ * @package    WP_Audition
+ * @subpackage WP_Audition/public/partials
  */
 ?>
 

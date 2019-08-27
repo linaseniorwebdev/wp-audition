@@ -9,8 +9,8 @@
  * @link       https://github.com/linaseniorwebdev
  * @since      1.0.0
  *
- * @package    Wp_Audition
- * @subpackage Wp_Audition/includes
+ * @package    WP_Audition
+ * @subpackage WP_Audition/includes
  */
 
 /**
@@ -23,11 +23,11 @@
  * version of the plugin.
  *
  * @since      1.0.0
- * @package    Wp_Audition
- * @subpackage Wp_Audition/includes
+ * @package    WP_Audition
+ * @subpackage WP_Audition/includes
  * @author     Top Service <top.service.31380@gmail.com>
  */
-class Wp_Audition {
+class WP_Audition {
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
@@ -35,7 +35,7 @@ class Wp_Audition {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      Wp_Audition_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      WP_Audition_Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -86,10 +86,10 @@ class Wp_Audition {
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - Wp_Audition_Loader. Orchestrates the hooks of the plugin.
-	 * - Wp_Audition_i18n. Defines internationalization functionality.
-	 * - Wp_Audition_Admin. Defines all hooks for the admin area.
-	 * - Wp_Audition_Public. Defines all hooks for the public side of the site.
+	 * - WP_Audition_Loader. Orchestrates the hooks of the plugin.
+	 * - WP_Audition_i18n. Defines internationalization functionality.
+	 * - WP_Audition_Admin. Defines all hooks for the admin area.
+	 * - WP_Audition_Public. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -122,14 +122,14 @@ class Wp_Audition {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wp-audition-public.php';
 
-		$this->loader = new Wp_Audition_Loader();
+		$this->loader = new WP_Audition_Loader();
 
 	}
 
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
-	 * Uses the Wp_Audition_i18n class in order to set the domain and to register the hook
+	 * Uses the WP_Audition_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
 	 * @since    1.0.0
@@ -137,7 +137,7 @@ class Wp_Audition {
 	 */
 	private function set_locale() {
 
-		$plugin_i18n = new Wp_Audition_i18n();
+		$plugin_i18n = new WP_Audition_i18n();
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
@@ -152,7 +152,7 @@ class Wp_Audition {
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_admin = new Wp_Audition_Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_admin = new WP_Audition_Admin( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
@@ -168,7 +168,7 @@ class Wp_Audition {
 	 */
 	private function define_public_hooks() {
 
-		$plugin_public = new Wp_Audition_Public( $this->get_plugin_name(), $this->get_version() );
+		$plugin_public = new WP_Audition_Public( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
@@ -199,7 +199,7 @@ class Wp_Audition {
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
 	 * @since     1.0.0
-	 * @return    Wp_Audition_Loader    Orchestrates the hooks of the plugin.
+	 * @return    WP_Audition_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
 		return $this->loader;

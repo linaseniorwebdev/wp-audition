@@ -1,27 +1,20 @@
 <?php
 
 /**
- * The plugin bootstrap file
- *
- * This file is read by WordPress to generate the plugin information in the plugin
- * admin area. This file also includes all of the dependencies used by the plugin,
- * registers the activation and deactivation functions, and defines a function
- * that starts the plugin.
- *
  * @link              https://github.com/linaseniorwebdev
  * @since             1.0.0
- * @package           Wp_Audition
+ * @package           WP_Audition
  *
  * @wordpress-plugin
- * Plugin Name:       WP Audition
+ * Plugin Name:       Audition Plugin for Wordpress
  * Plugin URI:        wp-audition
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       This plugin is built for matching site.
  * Version:           1.0.0
  * Author:            Top Service
  * Author URI:        https://github.com/linaseniorwebdev
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       wp-audition
+ * Text Domain:       https://github.com/linaseniorwebdev/wp-audition
  * Domain Path:       /languages
  */
 
@@ -43,7 +36,7 @@ define( 'WP_AUDITION_VERSION', '1.0.0' );
  */
 function activate_wp_audition() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-wp-audition-activator.php';
-	Wp_Audition_Activator::activate();
+	WP_Audition_Activator::activate();
 }
 
 /**
@@ -52,7 +45,7 @@ function activate_wp_audition() {
  */
 function deactivate_wp_audition() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-wp-audition-deactivator.php';
-	Wp_Audition_Deactivator::deactivate();
+	WP_Audition_Deactivator::deactivate();
 }
 
 register_activation_hook( __FILE__, 'activate_wp_audition' );
@@ -75,7 +68,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-wp-audition.php';
  */
 function run_wp_audition() {
 
-	$plugin = new Wp_Audition();
+	$plugin = new WP_Audition();
 	$plugin->run();
 
 }

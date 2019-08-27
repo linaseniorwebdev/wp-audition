@@ -6,8 +6,8 @@
  * @link       https://github.com/linaseniorwebdev
  * @since      1.0.0
  *
- * @package    Wp_Audition
- * @subpackage Wp_Audition/includes
+ * @package    WP_Audition
+ * @subpackage WP_Audition/includes
  */
 
 /**
@@ -17,11 +17,11 @@
  * the plugin, and register them with the WordPress API. Call the
  * run function to execute the list of actions and filters.
  *
- * @package    Wp_Audition
- * @subpackage Wp_Audition/includes
+ * @package    WP_Audition
+ * @subpackage WP_Audition/includes
  * @author     Top Service <top.service.31380@gmail.com>
  */
-class Wp_Audition_Loader {
+class WP_Audition_Loader {
 
 	/**
 	 * The array of actions registered with WordPress.

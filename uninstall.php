@@ -22,7 +22,7 @@
  * @link       https://github.com/linaseniorwebdev
  * @since      1.0.0
  *
- * @package    Wp_Audition
+ * @package    WP_Audition
  */
 
 // If uninstall not called from WordPress, then exit.

@@ -6,8 +6,8 @@
  * @link       https://github.com/linaseniorwebdev
  * @since      1.0.0
  *
- * @package    Wp_Audition
- * @subpackage Wp_Audition/public
+ * @package    WP_Audition
+ * @subpackage WP_Audition/public
  */
 
 /**
@@ -16,11 +16,11 @@
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the public-facing stylesheet and JavaScript.
  *
- * @package    Wp_Audition
- * @subpackage Wp_Audition/public
+ * @package    WP_Audition
+ * @subpackage WP_Audition/public
  * @author     Top Service <top.service.31380@gmail.com>
  */
-class Wp_Audition_Public {
+class WP_Audition_Public {
 
 	/**
 	 * The ID of this plugin.
@@ -65,10 +65,10 @@ class Wp_Audition_Public {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Wp_Audition_Loader as all of the hooks are defined
+		 * defined in WP_Audition_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Wp_Audition_Loader will then create the relationship
+		 * The WP_Audition_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
@@ -88,10 +88,10 @@ class Wp_Audition_Public {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Wp_Audition_Loader as all of the hooks are defined
+		 * defined in WP_Audition_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Wp_Audition_Loader will then create the relationship
+		 * The WP_Audition_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */

@@ -9,8 +9,8 @@
  * @link       https://github.com/linaseniorwebdev
  * @since      1.0.0
  *
- * @package    Wp_Audition
- * @subpackage Wp_Audition/includes
+ * @package    WP_Audition
+ * @subpackage WP_Audition/includes
  */
 
 /**
@@ -20,11 +20,11 @@
  * so that it is ready for translation.
  *
  * @since      1.0.0
- * @package    Wp_Audition
- * @subpackage Wp_Audition/includes
+ * @package    WP_Audition
+ * @subpackage WP_Audition/includes
  * @author     Top Service <top.service.31380@gmail.com>
  */
-class Wp_Audition_i18n {
+class WP_Audition_i18n {
 
 
 	/**
