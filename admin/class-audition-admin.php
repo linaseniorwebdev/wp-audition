@@ -36,7 +36,7 @@ final class Audition_Admin {
 	 * @return Audition_Admin
 	 */
 	public static function get_instance() {
-		if ( null === self::$instance ) {
+		if (null === self::$instance) {
 			self::$instance = new self();
 		}
 		return self::$instance;
@@ -60,28 +60,28 @@ final class Audition_Admin {
 	 * @return string The resulting page's hook_suffix or false if the user does
 	 *                not have the capability required.
 	 */
-	public function add_menu_item( $args = array() ) {
-		$args = wp_parse_args( $args, array(
+	public function add_menu_item($args = array()) {
+		$args = wp_parse_args($args, array(
 			'page_title'  => '',
 			'menu_title'  => '',
 			'menu_slug'   => '',
 			'parent_slug' => 'audition',
 			'capability'  => 'manage_options',
 			'function'    => 'audition_admin_settings_page',
-		) );
+		));
 
-		if ( empty( $args['page_title'] ) || empty( $args['menu_title'] ) || empty( $args['menu_slug'] ) ) {
+		if (empty($args['page_title']) || empty($args['menu_title']) || empty($args['menu_slug'])) {
 			return;
 		}
 
-		if ( empty( $args['parent_slug'] ) ) {
+		if (empty($args['parent_slug'])) {
 			$hook = add_menu_page(
 				$args['page_title'],
 				$args['menu_title'],
 				$args['capability'],
 				$args['menu_slug'],
 				$args['function'],
-				isset( $args['menu_icon'] ) ? $args['menu_icon'] : ''
+				isset($args['menu_icon']) ? $args['menu_icon'] : ''
 			);
 		} else {
 			$hook = add_submenu_page(
@@ -107,8 +107,8 @@ final class Audition_Admin {
 	 * @param string $page The page slug.
 	 * @return bool True if the page is a TML admin page, false if not.
 	 */
-	public function has_page( $page ) {
-		return ! empty( $this->pages[ $page ] );
+	public function has_page($page) {
+		return ! empty($this->pages[ $page ]);
 	}
 
 	/**
@@ -119,8 +119,8 @@ final class Audition_Admin {
 	 * @param string $page The plugin page.
 	 * @return string The page hook.
 	 */
-	public function get_page_hook( $page = 'audition' ) {
-		if ( $this->has_page( $page ) ) {
+	public function get_page_hook($page = 'audition') {
+		if ($this->has_page($page)) {
 			return $this->pages[ $page ];
 		}
 	}
@@ -139,7 +139,7 @@ final class Audition_Admin {
 		 *
 		 * @param Audition_Admin The TML Admin object.
 		 */
-		do_action( 'audition_admin_init', $this );
+		do_action('audition_admin_init', $this);
 	}
 
 	/**

@@ -103,11 +103,11 @@ class Audition_Action {
 	 *     @type bool        $show_in_slug_settings Whether this action should be shown in the slug settings or not.
 	 * }
 	 */
-	public function __construct( $name, $args = array() ) {
+	public function __construct($name, $args = array()) {
 
-		$this->set_name( $name );
+		$this->set_name($name);
 
-		$args = wp_parse_args( $args, array(
+		$args = wp_parse_args($args, array(
 			'title'                 => '',
 			'slug'                  => '',
 			'callback'              => '',
@@ -116,15 +116,15 @@ class Audition_Action {
 			'show_in_widget'        => true,
 			'show_in_nav_menus'     => true,
 			'show_in_slug_settings' => true,
-		) );
+		));
 
-		if ( ! isset( $args['show_nav_menu_item'] ) ) {
+		if (! isset($args['show_nav_menu_item'])) {
 			$args['show_nav_menu_item'] = $args['show_in_nav_menus'];
 		}
 
-		$this->set_title( $args['title'] );
-		$this->set_slug( $args['slug'] );
-		$this->set_callback( $args['callback'] );
+		$this->set_title($args['title']);
+		$this->set_slug($args['slug']);
+		$this->set_callback($args['callback']);
 
 		$this->network               = (bool) $args['network'];
 		$this->show_on_forms         = $args['show_on_forms'];
@@ -152,8 +152,8 @@ class Audition_Action {
 	 *
 	 * @param string $name The action name.
 	 */
-	protected function set_name( $name ) {
-		$this->name = sanitize_key( $name );
+	protected function set_name($name) {
+		$this->name = sanitize_key($name);
 	}
 
 	/**
@@ -172,7 +172,7 @@ class Audition_Action {
 		 * @param string $title The action title.
 		 * @param string $name  The action name.
 		 */
-		return apply_filters( 'audition_get_action_title', $this->title, $this->get_name() );
+		return apply_filters('audition_get_action_title', $this->title, $this->get_name());
 	}
 
 	/**
@@ -182,7 +182,7 @@ class Audition_Action {
 	 *
 	 * @param string $title The action title.
 	 */
-	public function set_title( $title ) {
+	public function set_title($title) {
 		$this->title = $title;
 	}
 
@@ -204,7 +204,7 @@ class Audition_Action {
 	 *
 	 * @param callable $callback The action callback.
 	 */
-	public function set_callback( $callback ) {
+	public function set_callback($callback) {
 		$this->callback = $callback;
 	}
 
@@ -214,8 +214,8 @@ class Audition_Action {
 	 * @since 7.0.3
 	 */
 	public function add_callback_hook() {
-		if ( $callback = $this->get_callback() ) {
-			add_action( 'audition_action_' . $this->get_name(), $callback, 15 );
+		if ($callback = $this->get_callback()) {
+			add_action('audition_action_' . $this->get_name(), $callback, 15);
 		}
 	}
 
@@ -225,8 +225,8 @@ class Audition_Action {
 	 * @since 7.0.3
 	 */
 	public function remove_callback_hook() {
-		if ( $callback = $this->get_callback() ) {
-			remove_action( 'audition_action_' . $this->get_name(), $callback, 15 );
+		if ($callback = $this->get_callback()) {
+			remove_action('audition_action_' . $this->get_name(), $callback, 15);
 		}
 	}
 
@@ -246,7 +246,7 @@ class Audition_Action {
 		 * @param string $slug The action slug.
 		 * @param string $name The action name.
 		 */
-		return apply_filters( 'audition_get_action_slug', $this->slug, $this->get_name() );
+		return apply_filters('audition_get_action_slug', $this->slug, $this->get_name());
 	}
 
 	/**
@@ -256,8 +256,8 @@ class Audition_Action {
 	 *
 	 * @param string $slug The action slug.
 	 */
-	public function set_slug( $slug ) {
-		if ( empty( $slug ) ) {
+	public function set_slug($slug) {
+		if (empty($slug)) {
 			$slug = $this->get_name();
 		}
 		$this->slug = $slug;
@@ -272,18 +272,18 @@ class Audition_Action {
 	 * @param bool   $network Whether to retrieve the URL for the current network or current blog.
 	 * @return string The action URL.
 	 */
-	public function get_url( $scheme = 'login', $network = null ) {
-		if ( null === $network ) {
+	public function get_url($scheme = 'login', $network = null) {
+		if (null === $network) {
 			$network = $this->network;
 		}
 
 		$function = $network ? 'network_home_url' : 'home_url';
 
-		if ( audition_use_permalinks() ) {
-			$path = user_trailingslashit( $this->get_slug() );
-			$url  = $function( $path, $scheme );
+		if (audition_use_permalinks()) {
+			$path = user_trailingslashit($this->get_slug());
+			$url  = $function($path, $scheme);
 		} else {
-			$url = $function( '?action=' . $this->get_name(), $scheme );
+			$url = $function('?action=' . $this->get_name(), $scheme);
 		}
 
 		/**
@@ -296,6 +296,6 @@ class Audition_Action {
 		 * @param string $scheme  The URL scheme.
 		 * @param bool   $network Whether to retrieve the URL for the current network or current blog.
 		 */
-		return apply_filters( 'audition_get_action_url', $url, $this->get_name(), $scheme, $network );
+		return apply_filters('audition_get_action_url', $url, $this->get_name(), $scheme, $network);
 	}
 }

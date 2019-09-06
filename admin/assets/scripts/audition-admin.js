@@ -1,55 +1,55 @@
-( function( $ ) {
+(function($) {
 
-	$( initAuthCheckForm );
+	$(initAuthCheckForm);
 
 	function initAuthCheckForm() {
-		var authCheckForm = $( '#wp-auth-check-form' );
+		var authCheckForm = $('#wp-auth-check-form');
 
-		if ( authCheckForm.length ) {
-			authCheckForm.attr( 'data-src', tmlAdmin.interimLoginUrl );
+		if (authCheckForm.length) {
+			authCheckForm.attr('data-src', tmlAdmin.interimLoginUrl);
 		}
 	}
-} )( jQuery );
+})(jQuery);
 
-( function( $ ) {
+(function($) {
 
-	$( initMetaBoxes );
+	$(initMetaBoxes);
 
 	function initMetaBoxes() {
-		var metaboxes = $( '#audition-settings .postbox' );
+		var metaboxes = $('#audition-settings .postbox');
 
-		if ( metaboxes.length ) {
+		if (metaboxes.length) {
 			// Make metaboxes toggleable
-			postboxes.add_postbox_toggles( pagenow );
+			postboxes.add_postbox_toggles(pagenow);
 
 			// Close all metaboxes by default
-			$( '.postbox' ).addClass( 'closed' );
+			$('.postbox').addClass('closed');
 
 			// Find each metabox holder
-			$( '.metabox-holder' ).each( function() {
-				var holder = $( this );
+			$('.metabox-holder').each(function() {
+				var holder = $(this);
 
 				// Maybe disable sorting
-				if ( holder.data( 'sortable' ) == 'off' ) {
-					holder.find( '.meta-box-sortables' ).sortable( 'destroy' );
-					holder.find( '.postbox .hndle' ).css( 'cursor', 'default' );
+				if (holder.data('sortable') == 'off') {
+					holder.find('.meta-box-sortables').sortable('destroy');
+					holder.find('.postbox .hndle').css('cursor', 'default');
 				}
-			} );
+			});
 		}
 	}
-} )( jQuery );
+})(jQuery);
 
-( function( $ ) {
-	$( initNotices );
+(function($) {
+	$(initNotices);
 
 	function initNotices() {
-		$( '.audition-notice' ).on( 'click', '.notice-dismiss', function( e ) {
-			var notice = $( e.delegateTarget );
+		$('.audition-notice').on('click', '.notice-dismiss', function(e) {
+			var notice = $(e.delegateTarget);
 
-			$.post( ajaxurl, {
+			$.post(ajaxurl, {
 				action: 'audition-dismiss-notice',
-				notice: notice.data( 'notice' )
-			} );
-		} );
+				notice: notice.data('notice')
+			});
+		});
 	}
-} )( jQuery );
+})(jQuery);

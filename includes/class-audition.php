@@ -18,13 +18,13 @@ final class Audition {
 	private $data = array();
 
 	public static function get_instance() {
-		if ( null === self::$instance ) {
+		if (null === self::$instance) {
 			self::$instance = new self();
 		}
 		return self::$instance;
 	}
 
-	public function register_action( Audition_Action $action ) {
+	public function register_action(Audition_Action $action) {
 
 		$this->actions[ $action->get_name() ] = $action;
 
@@ -38,7 +38,7 @@ final class Audition {
 		 * @param string                $name   The action name.
 		 * @param Audition_Action $action The action object.
 		 */
-		do_action( 'audition_registered_action', $action->get_name(), $action );
+		do_action('audition_registered_action', $action->get_name(), $action);
 
 		return $action;
 	}
@@ -50,18 +50,18 @@ final class Audition {
 	 *
 	 * @param string|Audition_Action $action The action name or object.
 	 */
-	public function unregister_action( $action ) {
-		if ( $action instanceof Audition_Action ) {
+	public function unregister_action($action) {
+		if ($action instanceof Audition_Action) {
 
 			$action->remove_callback_hook();
 
-			unset( $this->actions[ $action->get_name() ] );
+			unset($this->actions[ $action->get_name() ]);
 		} else {
-			if ( $action = $this->get_action( $action ) ) {
+			if ($action = $this->get_action($action)) {
 
 				$action->remove_callback_hook();
 
-				unset( $this->actions[ $action->get_name() ] );
+				unset($this->actions[ $action->get_name() ]);
 			}
 		}
 	}
@@ -74,8 +74,8 @@ final class Audition {
 	 * @param string $action The action name.
 	 * @return Audition_Action|bool The action object if it exists or false otherwise.
 	 */
-	public function get_action( $action ) {
-		if ( isset( $this->actions[ $action ] ) ) {
+	public function get_action($action) {
+		if (isset($this->actions[ $action ])) {
 			return $this->actions[ $action ];
 		}
 		return false;
@@ -100,7 +100,7 @@ final class Audition {
 	 * @param Audition_Form $form The form object.
 	 * @return Audition_Form The form object.
 	 */
-	public function register_form( Audition_Form $form ) {
+	public function register_form(Audition_Form $form) {
 
 		$this->forms[ $form->get_name() ] = $form;
 
@@ -112,7 +112,7 @@ final class Audition {
 		 * @param string              $name The form name.
 		 * @param Audition_Form $form The form object.
 		 */
-		do_action( 'audition_registered_form', $form->get_name(), $form );
+		do_action('audition_registered_form', $form->get_name(), $form);
 
 		return $form;
 	}
@@ -124,11 +124,11 @@ final class Audition {
 	 *
 	 * @param string|Audition_Form $form The form name or object.
 	 */
-	public function unregister_form( $form ) {
-		if ( $form instanceof Audition_Form ) {
-			unset( $this->forms[ $form->get_name() ] );
+	public function unregister_form($form) {
+		if ($form instanceof Audition_Form) {
+			unset($this->forms[ $form->get_name() ]);
 		} else {
-			unset( $this->forms[ $form ] );
+			unset($this->forms[ $form ]);
 		}
 	}
 
@@ -140,8 +140,8 @@ final class Audition {
 	 * @param string $form The form name.
 	 * @return Audition_Form|bool The form object if it exists or false otherwise.
 	 */
-	public function get_form( $form ) {
-		if ( isset( $this->forms[ $form ] ) ) {
+	public function get_form($form) {
+		if (isset($this->forms[ $form ])) {
 			return $this->forms[ $form ];
 		}
 		return false;
@@ -166,7 +166,7 @@ final class Audition {
 	 * @param Audition_Extension $extension The extension object.
 	 * @return Audition_Extension The extension object.
 	 */
-	public function register_extension( Audition_Extension $extension ) {
+	public function register_extension(Audition_Extension $extension) {
 
 		$this->extensions[ $extension->get_name() ] = $extension;
 
@@ -178,7 +178,7 @@ final class Audition {
 		 * @param string                   $name   The extension name.
 		 * @param Audition_Extension $extension The extension object.
 		 */
-		do_action( 'audition_registered_extension', $extension->get_name(), $extension );
+		do_action('audition_registered_extension', $extension->get_name(), $extension);
 
 		return $extension;
 	}
@@ -190,11 +190,11 @@ final class Audition {
 	 *
 	 * @param string|Audition_Extension $extension The extension name or object.
 	 */
-	public function unregister_extension( $extension ) {
-		if ( $extension instanceof Audition_Extension ) {
-			unset( $this->extensions[ $extension->get_name() ] );
+	public function unregister_extension($extension) {
+		if ($extension instanceof Audition_Extension) {
+			unset($this->extensions[ $extension->get_name() ]);
 		} else {
-			unset( $this->extensions[ $extension ] );
+			unset($this->extensions[ $extension ]);
 		}
 	}
 
@@ -206,8 +206,8 @@ final class Audition {
 	 * @param string $extension The extension name.
 	 * @return Audition_Extension|bool The extension object if it exists or false otherwise.
 	 */
-	public function get_extension( $extension ) {
-		if ( isset( $this->extensions[ $extension ] ) ) {
+	public function get_extension($extension) {
+		if (isset($this->extensions[ $extension ])) {
 			return $this->extensions[ $extension ];
 		}
 		return false;
@@ -235,7 +235,7 @@ final class Audition {
 		 *
 		 * @since 7.0
 		 */
-		do_action( 'audition_activate' );
+		do_action('audition_activate');
 	}
 
 	/**
@@ -249,7 +249,7 @@ final class Audition {
 		 *
 		 * @since 7.0
 		 */
-		do_action( 'audition_deactivate' );
+		do_action('audition_deactivate');
 	}
 
 	/**
@@ -261,8 +261,8 @@ final class Audition {
 	 * @param mixed  $default The value to return if the property is not set.
 	 * @return mixed The property value or $default if not set.
 	 */
-	public function get_data( $name, $default = false ) {
-		if ( array_key_exists( $name, $this->data ) ) {
+	public function get_data($name, $default = false) {
+		if (array_key_exists($name, $this->data)) {
 			return $this->data[ $name ];
 		}
 		return $default;
@@ -276,9 +276,9 @@ final class Audition {
 	 * @param string|array $name  The property name or an array of properties.
 	 * @param mixed        $value The property value.
 	 */
-	public function set_data( $name, $value = '' ) {
-		if ( is_array( $name ) ) {
-			foreach( $name as $k => $v ) {
+	public function set_data($name, $value = '') {
+		if (is_array($name)) {
+			foreach($name as $k => $v) {
 				$this->data[ $k ] = $v;
 			}
 		} else {
@@ -299,16 +299,16 @@ final class Audition {
 		 *
 		 * @param Audition $tml The TML object.
 		 */
-		do_action( 'audition_init', $this );
+		do_action('audition_init', $this);
 
 		// Get the main plugin file path
-		$plugin_file = str_replace( array( 'src', 'build' ), '', AUDITION_PATH . 'audition.php' );
+		$plugin_file = str_replace(array('src', 'build'), '', AUDITION_PATH . 'audition.php');
 
 		// Run the activation hook
-		register_activation_hook( $plugin_file, array( $this, 'activate' ) );
+		register_activation_hook($plugin_file, array($this, 'activate'));
 
 		// Run the deactivation hook
-		register_deactivation_hook( $plugin_file, array( $this, 'deactivate' ) );
+		register_deactivation_hook($plugin_file, array($this, 'deactivate'));
 	}
 
 	/**
@@ -330,14 +330,14 @@ final class Audition {
 	 *
 	 * @since 7.0.1
 	 */
-	public static function __callStatic( $name, $args ) {
-		switch ( $name ) {
+	public static function __callStatic($name, $args) {
+		switch ($name) {
 			case 'get_object' :
 				return self::get_instance();
 				break;
 
 			case 'is_audition_page' :
-				return audition_is_action( isset( $args[0] ) ? $args[0] : '' );
+				return audition_is_action(isset($args[0]) ? $args[0] : '');
 				break;
 		}
 	}

@@ -20,10 +20,10 @@ class Audition_Widget extends WP_Widget {
 	 * @since 6.0
 	 */
 	public function  __construct() {
-		parent::__construct( 'audition', __( 'Audition', 'audition' ), array(
+		parent::__construct('audition', __('Audition', 'audition'), array(
 			'classname'   => 'widget_audition',
-			'description' => __( 'A login form for your site.', 'audition' ),
-		) );
+			'description' => __('A login form for your site.', 'audition'),
+		));
 	}
 
 	/**
@@ -34,10 +34,10 @@ class Audition_Widget extends WP_Widget {
 	 * @param array $args
 	 * @param array $instance
 	 */
-	public function widget( $args, $instance ) {
-		$instance = wp_parse_args( $instance, $this->defaults() );
+	public function widget($args, $instance) {
+		$instance = wp_parse_args($instance, $this->defaults());
 
-		$show_widget = ( is_user_logged_in() && 'login' != $instance['action'] ) || ! audition_is_action();
+		$show_widget = (is_user_logged_in() && 'login' != $instance['action']) || ! audition_is_action();
 
 		/**
 		 * Filters whether to show the widget or not.
@@ -47,26 +47,26 @@ class Audition_Widget extends WP_Widget {
 		 * @param bool  $show_widget Whether to show the widget or not.
 		 * @param array $instance    The widget instance settings.
 		 */
-		$show_widget = apply_filters( 'audition_show_widget', $show_widget, $instance );
+		$show_widget = apply_filters('audition_show_widget', $show_widget, $instance);
 
-		if ( ! $show_widget ) {
+		if (! $show_widget) {
 			return;
 		}
 
-		if ( is_user_logged_in() ) {
-			$title = _x( 'Welcome', 'Howdy', 'audition' );
+		if (is_user_logged_in()) {
+			$title = _x('Welcome', 'Howdy', 'audition');
 		} else {
-			$title = audition_get_action_title( $instance['action'] );
+			$title = audition_get_action_title($instance['action']);
 		}
-		$title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
+		$title = apply_filters('widget_title', $title, $instance, $this->id_base);
 
 		echo $args['before_widget'];
 
-		if ( $title ) {
+		if ($title) {
 			echo $args['before_title'] . $title . $args['after_title'];
 		}
 
-		if ( is_user_logged_in() ) :
+		if (is_user_logged_in()) :
 			/**
 			 * Filters the size of the avatar shwon in the widget when logged in.
 			 *
@@ -74,7 +74,7 @@ class Audition_Widget extends WP_Widget {
 			 *
 			 * @param int $avatar_size The size of the avatar shown in the widget when logged in.
 			 */
-			$avatar_size = apply_filters( 'audition_widget_avatar_size', 64 );
+			$avatar_size = apply_filters('audition_widget_avatar_size', 64);
 
 			/**
 			 * Filters the links shown in the widget when logged in.
@@ -83,34 +83,34 @@ class Audition_Widget extends WP_Widget {
 			 *
 			 * @param array $user_links The links shown in the widget when logged in.
 			 */
-			$user_links = apply_filters( 'audition_widget_user_links', array(
+			$user_links = apply_filters('audition_widget_user_links', array(
 				'dashboard' => array(
-					'title' => __( 'Dashboard' ),
+					'title' => __('Dashboard'),
 					'url'   => admin_url(),
 				),
 				'profile'   => array(
-					'title' => __( 'Profile', 'audition' ),
-					'url'   => admin_url( 'profile.php' ),
+					'title' => __('Profile', 'audition'),
+					'url'   => admin_url('profile.php'),
 				),
 				'logout'    => array(
-					'title' => __( 'Log Out' ),
+					'title' => __('Log Out'),
 					'url'   => wp_logout_url(),
 				),
-			) );
+			));
 			?>
 
 			<div class="tml audition-user-panel">
-				<?php if ( ! empty( $avatar_size ) ) : ?>
-					<div class="audition-user-avatar"><?php echo get_avatar( get_current_user_id(), $avatar_size ); ?></div>
+				<?php if (! empty($avatar_size)) : ?>
+					<div class="audition-user-avatar"><?php echo get_avatar(get_current_user_id(), $avatar_size); ?></div>
 				<?php endif; ?>
 
-				<?php if ( ! empty( $user_links ) ) : ?>
+				<?php if (! empty($user_links)) : ?>
 					<ul class="audition-user-links">
 
-					<?php foreach ( $user_links as $name => $user_link ) : ?>
+					<?php foreach ($user_links as $name => $user_link) : ?>
 
-						<li class="audition-user-link-<?php echo esc_attr( $name ); ?>">
-							<a href="<?php echo esc_url( $user_link['url'] ); ?>"><?php echo esc_html( $user_link['title'] ); ?></a>
+						<li class="audition-user-link-<?php echo esc_attr($name); ?>">
+							<a href="<?php echo esc_url($user_link['url']); ?>"><?php echo esc_html($user_link['title']); ?></a>
 						</li>
 
 					<?php endforeach; ?>
@@ -126,18 +126,18 @@ class Audition_Widget extends WP_Widget {
 				 *
 				 * @param array $instance The widget instance settings.
 				 */
-				do_action( 'audition_widget_user_panel', $instance );
+				do_action('audition_widget_user_panel', $instance);
 				?>
 
 			</div>
 
 		<?php else :
 
-			echo audition_shortcode( array(
+			echo audition_shortcode(array(
 				'action'      => $instance['action'],
 				'show_links'  => $instance['show_links'],
 				'redirect_to' => $_SERVER['REQUEST_URI'],
-			) );
+			));
 
 		endif;
 
@@ -150,27 +150,27 @@ class Audition_Widget extends WP_Widget {
 	* @since 6.0
 	* @access public
 	*/
-	public function form( $instance ) {
-		$instance = wp_parse_args( $instance, $this->defaults() );
+	public function form($instance) {
+		$instance = wp_parse_args($instance, $this->defaults());
 
-		$actions = wp_list_filter( audition_get_actions(), array(
+		$actions = wp_list_filter(audition_get_actions(), array(
 			'show_in_widget' => true,
-		) );
+		));
 		?>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'action' ); ?>"><?php _e( 'Action:' ); ?>
-				<select class="widefat" id="<?php echo $this->get_field_id( 'action' ); ?>" name="<?php echo $this->get_field_name( 'action' ); ?>">
-					<?php foreach ( $actions as $action ) : ?>
-						<option value="<?php echo esc_attr( $action->get_name() ); ?>"<?php selected( $action->get_name(), $instance['action'] ); ?>><?php echo esc_html( $action->get_title() ); ?></option>
+			<label for="<?php echo $this->get_field_id('action'); ?>"><?php _e('Action:'); ?>
+				<select class="widefat" id="<?php echo $this->get_field_id('action'); ?>" name="<?php echo $this->get_field_name('action'); ?>">
+					<?php foreach ($actions as $action) : ?>
+						<option value="<?php echo esc_attr($action->get_name()); ?>"<?php selected($action->get_name(), $instance['action']); ?>><?php echo esc_html($action->get_title()); ?></option>
 					<?php endforeach; ?>
 				</select>
 			</label>
 		</p>
 
 		<p>
-			<input class="checkbox" id="<?php echo $this->get_field_id( 'show_links' ); ?>" name="<?php echo $this->get_field_name( 'show_links' ); ?>" type="checkbox" value="1"<?php checked( ! empty( $instance['show_links'] ) ); ?> />
-			<label for="<?php echo $this->get_field_id( 'show_links' ); ?>"><?php _e( 'Show action links?', 'audition' ); ?></label>
+			<input class="checkbox" id="<?php echo $this->get_field_id('show_links'); ?>" name="<?php echo $this->get_field_name('show_links'); ?>" type="checkbox" value="1"<?php checked(! empty($instance['show_links'])); ?> />
+			<label for="<?php echo $this->get_field_id('show_links'); ?>"><?php _e('Show action links?', 'audition'); ?></label>
 		</p>
 
 		<?php
@@ -185,12 +185,12 @@ class Audition_Widget extends WP_Widget {
 	* @param array $old_instance The old settings.
 	* @return array The updated settings.
 	*/
-	public function update( $new_instance, $old_instance ) {
+	public function update($new_instance, $old_instance) {
 		$instance = $old_instance;
 
-		$new_instance = wp_parse_args( (array) $new_instance, $this->defaults() );
+		$new_instance = wp_parse_args((array) $new_instance, $this->defaults());
 
-		$instance['action']     = sanitize_text_field( $new_instance['action'] );
+		$instance['action']     = sanitize_text_field($new_instance['action']);
 		$instance['show_links'] = (bool) $new_instance['show_links'];
 
 		return $instance;
@@ -216,6 +216,6 @@ class Audition_Widget extends WP_Widget {
 	 * @since 7.0
 	 */
 	public static function register() {
-		register_widget( 'Audition_Widget' );
+		register_widget('Audition_Widget');
 	}
 }

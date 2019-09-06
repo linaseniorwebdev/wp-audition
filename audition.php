@@ -13,9 +13,9 @@ Text Domain: audition
 Network: true
 */
 
-define( 'AUDITION_VERSION', '1.0.0' );
-define( 'AUDITION_PATH', plugin_dir_path( __FILE__ ) );
-define( 'AUDITION_URL',  plugin_dir_url( __FILE__ ) );
+define('AUDITION_VERSION', '1.0.0');
+define('AUDITION_PATH', plugin_dir_path(__FILE__));
+define('AUDITION_URL',  plugin_dir_url(__FILE__));
 
 require AUDITION_PATH . 'includes/class-audition.php';
 require AUDITION_PATH . 'includes/class-audition-action.php';
@@ -30,18 +30,18 @@ require AUDITION_PATH . 'includes/options.php';
 require AUDITION_PATH . 'includes/shortcodes.php';
 require AUDITION_PATH . 'includes/hooks.php';
 
-if ( is_multisite() ) {
+if (is_multisite()) {
 	require AUDITION_PATH . 'includes/ms-functions.php';
 	require AUDITION_PATH . 'includes/ms-hooks.php';
 }
 
-if ( defined( 'WP_CLI' ) && WP_CLI ) {
+if (defined('WP_CLI') && WP_CLI) {
 	require AUDITION_PATH . 'includes/commands.php';
 }
 
 audition();
 
-if ( is_admin() ) {
+if (is_admin()) {
 	require AUDITION_PATH . 'admin/class-audition-admin.php';
 	require AUDITION_PATH . 'admin/functions.php';
 	require AUDITION_PATH . 'admin/settings.php';

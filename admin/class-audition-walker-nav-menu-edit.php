@@ -20,11 +20,11 @@ class Audition_Walker_Nav_Menu_Edit extends Walker_Nav_Menu_Edit {
 	 * @param array  $args   An array of arguments for walking the tree.
 	 * @param int    $id     The nav menu ID.
 	 */
-	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+	function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0) {
 		$item_output = '';
 
 		// Get the item content from the parent class
-		parent::start_el( $item_output, $item, $depth, $args, $id );
+		parent::start_el($item_output, $item, $depth, $args, $id);
 
 		// Start an output buffer
 		ob_start();
@@ -39,14 +39,14 @@ class Audition_Walker_Nav_Menu_Edit extends Walker_Nav_Menu_Edit {
 		 * @param int    $depth   The current walker depth.
 		 * @param array  $args    An array of arguments for walking the tree.
 		 */
-		do_action( 'wp_nav_menu_item_custom_fields', $item->ID, $item, $depth, $args );
+		do_action('wp_nav_menu_item_custom_fields', $item->ID, $item, $depth, $args);
 
 		// Get the contents of the output buffer
 		$custom_fields = ob_get_clean();
 
 		// Append the contents of the output buffer to the nav menu item and
 		// append that to the walker output
-		$output .= preg_replace( '/(?=<(fieldset|p)[^>]+class="[^"]*field-move)/',
+		$output .= preg_replace('/(?=<(fieldset|p)[^>]+class="[^"]*field-move)/',
 			$custom_fields,
 			$item_output
 		);
